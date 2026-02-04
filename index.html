@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ตรวจสอบหน่วยออกเสียงประชามติ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family: sans-serif;
+  background:#f2f2f2;
+  margin:0;
+  padding:20px;
+}
+.box{
+  max-width:420px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  text-align:center;
+}
+h1{
+  font-size:22px;
+}
+input{
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  margin-top:15px;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  font-size:16px;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+}
+#result{
+  margin-top:20px;
+  font-size:18px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>ตรวจสอบหน่วยออกเสียงประชามติ</h1>
+  <p>กรอกเลขลำดับผู้มีสิทธิ์</p>
+
+  <input type="number" id="num" placeholder="เช่น 15234">
+  <button onclick="checkUnit()">ตรวจสอบ</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function checkUnit(){
+  const n = parseInt(document.getElementById("num").value);
+  let msg = "ไม่พบข้อมูล";
+
+  const data = [
+    [1,799,1],
+    [800,1613,2],
+    [1614,2410,3],
+    [2411,3219,4],
+    [3220,4024,5],
+    [4025,4824,6],
+    [4825,5616,7],
+    [5617,6430,8],
+    [6431,7224,9],
+    [7225,8036,10],
+    [8037,8828,11],
+    [8829,9634,12],
+    [9635,10426,13],
+    [10427,11122,14],
+    [11123,11922,15],
+    [11923,12728,16],
+    [12729,13529,17],
+    [13530,14321,18],
+    [14322,15130,19],
+    [15131,15937,20],
+    [15938,16836,21],
+    [16837,17541,22],
+    [17542,18337,23],
+    [18338,19136,24],
+    [19137,19941,25],
+    [19942,20744,26],
+    [20745,21558,27],
+    [21559,22372,28],
+    [22373,23185,29],
+    [23186,23993,30],
+    [23994,24785,31],
+    [24786,25596,32],
+    [25597,26403,33],
+    [26404,27195,34],
+    [27196,27987,35],
+    [27988,28779,36],
+    [28780,29587,37],
+    [29588,30379,38],
+    [30380,31173,39],
+    [31174,31978,40],
+    [31979,32781,41],
+    [32782,33573,42],
+    [33574,34010,43],
+    [34011,35179,44],
+    [35180,35725,45]
+  ];
+
+  if (isNaN(n)) {
+    msg = "กรุณากรอกตัวเลข";
+  } else {
+    for (let d of data){
+      if (n >= d[0] && n <= d[1]){
+        msg = "ท่านต้องไปออกเสียงที่หน่วยที่ " + d[2];
+        break;
+      }
+    }
+  }
+
+  document.getElementById("result").innerText = msg;
+}
+</script>
+
+</body>
+</html>
+add index
